@@ -35,7 +35,7 @@ WORKDIR /home/mitmproxy/
 
 VOLUME /.mitmproxy
 
-COPY modify_body_inject_iframe.py ./
+COPY modify_body_inject_script.py ./
 
 COPY docker-entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["docker-entrypoint.sh"]
