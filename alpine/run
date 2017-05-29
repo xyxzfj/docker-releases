@@ -1,1 +1,1 @@
-docker run --restart=always -d --name mitmproxy-script-injector -p 38080:8080 mitmproxy-script-injector:raw mitmdump -s modify_body_inject_script.py
+docker run --restart=always -d --name mitmproxy-script-injector -p 38080:8080 mitmproxy-script-injector:raw mitmdump -s modify_html_append_script.py
