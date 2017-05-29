@@ -1,0 +1,1 @@
+docker run -it --name mitmproxy-script-injector -p 8080:8080 mitmproxy-script-injector:raw mitmdump -s modify_body_inject_script.py

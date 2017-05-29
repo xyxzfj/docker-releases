@@ -19,6 +19,7 @@ RUN addgroup -S mitmproxy && adduser -S -G mitmproxy mitmproxy \
         python3 \
         python3-dev \
     && python3 -m ensurepip \
+    && pip3 install bs4 \
     && LDFLAGS=-L/lib pip3 install -r /tmp/requirements.txt \
     && apk del --purge \
         git \
@@ -29,7 +30,12 @@ RUN addgroup -S mitmproxy && adduser -S -G mitmproxy mitmproxy \
     && rm /tmp/requirements.txt \
     && rm -rf ~/.cache/pip
 
-VOLUME /home/mitmproxy/.mitmproxy
+
+WORKDIR /home/mitmproxy/
+
+VOLUME /.mitmproxy
+
+COPY modify_body_inject_iframe.py ./
 
 COPY docker-entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["docker-entrypoint.sh"]
